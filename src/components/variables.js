@@ -17,11 +17,15 @@ const popupImage = document.querySelector('.popup_type_image');
 // input-ы ПОПАПОВ
 // Находим форму в DOM
 const formElement = popupProfileEditer.querySelector('.popup__form');
+const addingForm = popupNewCard.querySelector('.popup__form');
+
 // Находим поля формы в DOM
 const nameInput = formElement.querySelector('.popup__input_type_name');
 const jobInput = formElement.querySelector('.popup__input_type_description');
+const placeInput = addingForm.querySelector('.popup__input_type_card-name');
+const linkInput = addingForm.querySelector('.popup__input_type_url');
 // export to index.js
 
 export {cardTemplate, cardlist, profileTitle, profileDescription, mainContent, 
   profileEditBtn, addBtn, popupProfileEditer, 
-  popupNewCard, popupImage, nameInput, jobInput, formElement}
+  popupNewCard, popupImage, nameInput, jobInput, formElement, addingForm, placeInput, linkInput}

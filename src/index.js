@@ -2,16 +2,16 @@
 import './index.css'; 
 
 // импорт модуля с объектом карт JS
-import { initialCards } from '../scripts/cards.js' 
+import { initialCards } from './components/cards.js' 
 
 // импорт модуля с Переменными
-import {cardTemplate, cardlist, profileTitle, profileDescription, mainContent, 
+import {cardTemplate, cardlist, mainContent, 
   profileEditBtn, addBtn, popupProfileEditer, 
-  popupNewCard, popupImage, nameInput, jobInput} 
-  from '../scripts/variables.js'
+  popupNewCard, popupImage} 
+  from './components/variables.js'
 
 // импорт модуля с Functions ПОПАПОВ
-import {openModal, closePopup, closeByOverlay, closeByEscapeKay, setInputsValue, handleFormSubmit} from '../scripts/pop-ups.js'
+import {openModal} from './components/modal.js'
 
 
 // POP-UP WORKS START
@@ -21,7 +21,7 @@ import {openModal, closePopup, closeByOverlay, closeByEscapeKay, setInputsValue,
 // POP-UP WORKS END
 
 // @todo: Функция создания карточки
-function createCard(date, callback, likeAction, cardImgZoom) {
+const createCard = (date, callback, likeAction, cardImgZoom)=> {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
   const cardText = cardElement.querySelector('.card__title');
@@ -46,7 +46,7 @@ function createCard(date, callback, likeAction, cardImgZoom) {
   return cardElement;
 }
 
-function imageZoom(img) {
+const imageZoom = (img)=> {
   const imageElement = popupImage.querySelector('.popup__image');
   const textElement = popupImage.querySelector('.popup__caption');
   //наполняем попап данными выбранной карточки.
@@ -57,12 +57,12 @@ function imageZoom(img) {
 }
 
 // @todo: Функция удаления карточки Callback
-function deleteCard(card) {
+const deleteCard = (card)=> {
   card.remove();
 }
 
 // @todo: Функция переключения LIKE карточки
-function likeCard(button) {
+const likeCard = (button)=> {
   button.classList.toggle('card__like-button_is-active');
 }
 
@@ -88,3 +88,4 @@ mainContent.addEventListener('click', (evt)=> {
   // }
 });
 
+export {createCard, imageZoom, deleteCard, likeCard}
