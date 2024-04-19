@@ -1,18 +1,30 @@
+// variables
 import {
   cardlist,
   profileTitle,
   profileDescription,
   popupProfileEditer,
   popupNewCard,
+  popupImage,
+  formElement,
+  addingForm,
   nameInput,
   jobInput,
-  addingForm,
   placeInput,
   linkInput,
-  formElement,
-} from "./variables.js";
+} from '../index.js'
 
-import {createCard, imageZoom, deleteCard, likeCard} from "../index.js";
+import {createCard, deleteCard, likeCard} from "./card.js";
+
+export {openModal, 
+  setInputsValue, 
+  handleFormSubmit, 
+  handleAddForm, 
+  closeByEscapeKay,
+  closePopup,
+  closeByOverlay,
+  imageZoom
+};
 
 const openModal = (popup) => {
   // Меняю значение placeholder на текущее значение
@@ -43,6 +55,7 @@ const openModal = (popup) => {
   document.addEventListener("keydown", closeByEscapeKay);
 };
 
+// Функция установки значения полей ввода
 const setInputsValue = () => {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
@@ -71,6 +84,7 @@ const handleAddForm = (evt) => {
   closePopup(popupNewCard);
 }
 
+// Функция закрытия по клавише ESC
 const closeByEscapeKay = (evt) => {
   if (evt.key === "Escape") {
     const modalWindows = Array.from(document.querySelectorAll(".popup")); // создали массив попапов
@@ -83,7 +97,7 @@ const closeByEscapeKay = (evt) => {
   }
 };
 
-// функция закрытия по кнопке
+// Функция закрытия по кнопке
 const closePopup = (popupToClose) => {
   popupToClose.classList.remove("popup_is-opened");
   setTimeout(()=> {
@@ -92,7 +106,7 @@ const closePopup = (popupToClose) => {
   
 };
 
-// функция закрытия по Overlay
+// Функция закрытия по Overlay
 const closeByOverlay = (evt) => {
   // console.log(evt.target);
   if (evt.target.classList.contains("popup_is-opened")) {
@@ -102,4 +116,13 @@ const closeByOverlay = (evt) => {
   }
 };
 
-export {openModal};
+// Функция открытия Модалки с увеличенной картинкой.
+const imageZoom = (img)=> {
+  const imageElement = popupImage.querySelector('.popup__image');
+  const textElement = popupImage.querySelector('.popup__caption');
+  //наполняем попап данными выбранной карточки.
+  imageElement.src = img.src ;
+  imageElement.alt = img.alt;
+  textElement.textContent = img.alt;
+  openModal(popupImage);
+}
