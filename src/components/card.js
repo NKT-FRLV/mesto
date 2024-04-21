@@ -1,10 +1,9 @@
 // variables
 import {cardTemplate} from "../index.js";
-
 export { createCard, deleteCard, likeCard };
 
 // @todo: Функция создания карточки
-const createCard = (date, callback, likeAction, cardImgZoom) => {
+function createCard(date, callback, likeAction, cardImgZoom) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardText = cardElement.querySelector(".card__title");
@@ -38,3 +37,4 @@ const deleteCard = (card) => {
 const likeCard = (button) => {
   button.classList.toggle("card__like-button_is-active");
 };
+
