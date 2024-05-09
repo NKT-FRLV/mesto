@@ -14,6 +14,7 @@ function openModal(popup) {
   // Вешаю Слушатели для закрытия модалки
   document.addEventListener("click", closeByOverlay);
   document.addEventListener("keydown", closeByEscapeKay);
+  
 };
 
 // Функция закрытия по клавише ESC
@@ -32,6 +33,7 @@ function closePopup(popupToClose) {
   setTimeout(()=> {
     popupToClose.classList.remove("popup_is-animated");
   },600)
+
   
 };
 

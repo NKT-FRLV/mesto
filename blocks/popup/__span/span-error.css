@@ -1,0 +1,11 @@
+.popup__input-error {
+  display: none;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: #f00;
+}
+
+.popup__input-error_active {
+  display: inline;
+}

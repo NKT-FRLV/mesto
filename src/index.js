@@ -1,11 +1,13 @@
 // импорт главного файла стилей
 import "./index.css";
 // импорт модуля с объектом данных карточек.
-import { initialCards } from "./components/cards.js";
+import {initialCards} from "./components/cards.js";
 // импорт модуля с Функциями создания карточки.
-import { createCard, deleteCard, likeCard } from "./components/card.js";
+import {createCard, deleteCard, likeCard} from "./components/card.js";
 // импорт модуля с Функциями Модальных окон.
 import {openModal, closePopup} from "./components/modal.js";
+// импорт функции Валидации форм.
+import {enableValidation, hideInputError, toggleButtonState} from "./components/validation.js";
 // Экспорты
 export {cardTemplate};
 
@@ -34,7 +36,6 @@ const jobInput = profileEditerForm.querySelector(".popup__input_type_description
 const placeInput = addingForm.querySelector(".popup__input_type_card-name");
 const linkInput = addingForm.querySelector(".popup__input_type_url");
 
-
 // @todo: Вывести карточки на страницу
 initialCards.forEach((cardDate) => {
   const cardElement = createCard(cardDate, deleteCard, likeCard, openImageZoomingPopup);
@@ -42,17 +43,40 @@ initialCards.forEach((cardDate) => {
 });
 
 // Слушатель для Открытия модалок.
-mainContent.addEventListener("click", (evt) => {
+mainContent.addEventListener("click", (evt) => { 
   if (evt.target === profileEditBtn) {
     openModal(popupProfileEditer);
+    clearValidation(popupProfileEditer.querySelector('.popup__form'))
     setProfileInputsValue();
   } else if (evt.target === addBtn) {
+    popupBtnDisable(popupNewCard.querySelector('.popup__form'));
     openModal(popupNewCard);
+
   }
 });
 
+// Функция отчисти полей ошибки при открытии формы Настройки профиля
+function clearValidation(formElement) {
+  const inputsOnError = Array.from(formElement.querySelectorAll('.popup__input_type_error'));
+  inputsOnError.forEach((inputElement)=> {
+    hideInputError(formElement, inputElement, {
+      inputErrorClass: 'popup__input_type_error',
+      errorClass: 'popup__input-error_active'
+    })
+  })
+}
+
+// Функция Дизейбляшая кнопку добавления карточки при открытии Попапа.
+function popupBtnDisable(formElement) {
+  const buttonElement = formElement.querySelector('.popup__button')
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  toggleButtonState(inputList, buttonElement, {
+    inactiveButtonClass: 'popup__button_disabled'
+  })
+}
+
 // слушатель отправки Формы
-profileEditerForm.addEventListener("submit", handleSetCurrentValues);
+profileEditerForm.addEventListener("submit", handleEditForm);
 
 // Слушатель формы создания карточки
 addingForm.addEventListener("submit", handleAddForm);
@@ -78,7 +102,7 @@ function handleAddForm(evt) {
 }
 
 // Обработчик формы настройки профиля
-function  handleSetCurrentValues(evt) {
+function  handleEditForm(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
@@ -102,3 +126,18 @@ function openImageZoomingPopup(img) {
   textElement.textContent = img.alt;
   openModal(popupImage);
 };
+
+
+// 
+//
+//
+//
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}); // Вешаем слушатели валидации
+
