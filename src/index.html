@@ -14,11 +14,12 @@
   </header>
   <main class="content">
     <section class="profile page__section">
-      <div class="profile__image" style="background-image: url('<%=require('../images/7ys-eGE5kbw.jpg')%>');"></div>
+      <!-- style="background-image: url('<%=require('../images/7ys-eGE5kbw.jpg')%>');" -->
+      <div class="profile__image"></div>
       <div class="profile__info">
-        <h1 class="profile__title">Frolov Nikita</h1>
+        <h1 class="profile__title"></h1>
         <button class="profile__edit-button" type="button"></button>
-        <p class="profile__description">Исследователь океана</p>
+        <p class="profile__description"></p>
       </div>
       <button class="profile__add-button" type="button"></button>
     </section>
@@ -32,6 +33,28 @@
       © 2024 Mesto Russia
     </p>
   </footer>
+
+
+  <div class="popup popup_change-avatar">
+    <div class="popup__content">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form class="popup__form" name="change-avatar">
+        
+        <input type="url" 
+                name="link" 
+                id="input-link" 
+                class="popup__input popup__input_type_url" 
+                data-error-message="Введите ссылку на картинку"
+                placeholder="Ссылка на аватарку" 
+                required>
+        <span class="popup__input-error input-link-error"></span>
+        <button type="submit" class="button popup__button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+
   <div class="popup popup_type_edit">
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
@@ -107,7 +130,10 @@
     <div class="card__description">
       <h2 class="card__title">
       </h2>
-      <button type="button" class="card__like-button"></button>
+      <div class="card__button-like-box">
+        <button type="button" class="card__like-button"></button>
+        <p class="card__likes-counter">4</p>
+      </div>
     </div>
   </li>
 </template>
