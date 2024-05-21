@@ -6,29 +6,8 @@
 ## Автор
 Фролов Никита
 
-```html
-<a href="https://mi-viejo-amigo.github.io/mesto/">Посмотреть проект</a>
-``` 
-```css
-a {
-  display: inline-block;
-  padding: 10px 20px;
-  font-weight: bold;
-  font-size: 18px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none; /* убираем подчеркивание */
-}
+## [Посмотреть проект](https://mi-viejo-amigo.github.io/mesto/)
 
-a:hover {
-  background-color: #0056b3;
-}
-
-``` 
 
 ## Технологии
 - HTML
