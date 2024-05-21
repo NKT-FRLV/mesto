@@ -57,7 +57,8 @@ function deleteButtonRemover(callback,button, card, date) {
 // @todo: Функция удаления карточки Callback функции createCard
 const deleteCardHendler = (card, date) => {
   deleteCard(date)
-    .then(() => {
+    .then((res) => {
+      console.log(res["message"]);
       card.remove();
     })
     .catch(err => console.error('Ошибка при удалении карточки:', err));

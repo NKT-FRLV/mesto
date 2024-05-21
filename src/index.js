@@ -70,13 +70,12 @@ function getUserDates() {
   return getDates()
     .then(({ userData }) => {
     // console.log(result.userData._id) // 1260cf58bf1bd4d147c7224a
-    const user = userData
-    userId = user._id; // Сохраняем userId в глобальную переменную
+    userId = userData._id; // Сохраняем userId в глобальную переменную
     // Настройка Профиля стр.
-    profileTitle.textContent = user.name 
-    profileDescription.textContent = user.about
-    profileAvatar.style.backgroundImage = `url('${user.avatar}')`;
-    return user
+    profileTitle.textContent = userData.name 
+    profileDescription.textContent = userData.about
+    profileAvatar.style.backgroundImage = `url('${userData.avatar}')`;
+    return userData
   })
 }
 // вызов данных о Пользователе
@@ -133,10 +132,10 @@ document.addEventListener("click", (evt) => {
 function handleAvatarForm(evt) {
   evt.preventDefault();
   const originalUrl = linkInputAvatar.value;
+  const popupButton = this.querySelector('.popup__button');
   validateImageUrl(originalUrl, avatarForm, linkInputAvatar, validationConfig)
     .then((isValid) => {
       if (isValid) {
-    const popupButton = this.querySelector('.popup__button');
     popupButton.textContent = 'Сохранение...';
     patchAvatar(originalUrl)
       .then((updatedUser) => {

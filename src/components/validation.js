@@ -81,7 +81,6 @@ function validateImageUrl(url, formElement, inputElement, validationConfig) {
   const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
   return fetch(proxyUrl, { method: 'HEAD' })
     .then(response => {
-      console.log(response)
       // Проверка статуса ответа
       if (!response.ok) {
         showInputError(formElement, inputElement, 'URL недоступен или не существует', validationConfig);
