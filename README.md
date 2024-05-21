@@ -7,7 +7,7 @@
 Фролов Никита
 
 ## Ссылка на проект
-[Посмотреть проект](https://yourprojectlink.com)
+[Посмотреть проект](https://students-yandex.github.io/mesto-project)
 
 ## Технологии
 - HTML
