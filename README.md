@@ -6,8 +6,7 @@
 ## Автор
 Фролов Никита
 
-## Ссылка на проект
-[Посмотреть проект](https://students-yandex.github.io/mesto-project)
+## <a href="https://mi-viejo-amigo.github.io/mesto-project-ff/" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 4px; transition: background-color 0.3s ease;">Посмотреть проект</a>
 
 ## Технологии
 - HTML
@@ -23,3 +22,6 @@
 - Обновление аватара пользователя
 - Валидация форм на стороне клиента
 
+## Скриншоты
+![Главная страница](./screenshots/main-page.png)
+![Редактирование профиля](./screenshots/edit-profile.png)
