@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
-  "homepage": "https://mi-viejo-amigo.github.io/mesto-project-ff/",
+  "homepage": "https://mi-viejo-amigo.github.io/mesto",
   "scripts": {
     "build": "rm -rf dist && webpack --mode production",
     "dev": "webpack serve",
