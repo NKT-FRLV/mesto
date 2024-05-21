@@ -6,7 +6,7 @@
 ## Автор
 Фролов Никита
 
-## <a href="https://mi-viejo-amigo.github.io/mesto-project-ff/" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 4px; transition: background-color 0.3s ease;">Посмотреть проект</a>
+## [Посмотреть проект](https://mi-viejo-amigo.github.io/mesto/){: .btn}
 
 ## Технологии
 - HTML
