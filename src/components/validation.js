@@ -65,33 +65,31 @@ function toggleButtonState(inputList, buttonElement, validationConfig) {
 
 // Функция отчисти полей ошибки при открытии формы Настройки профиля
 function clearValidation(formElement, validationConfig) {
-  const inputsOnError = Array.from(formElement.querySelectorAll(`.${validationConfig.inputErrorClass}`));
-  inputsOnError.forEach((inputElement)=> {
-    hideInputError(formElement, inputElement, validationConfig)
-    // inputElement.value = ''
-  })
-  // Функция Дизейбляшая кнопку добавления карточки при открытии Попапа.
-  const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector)
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+  inputList.forEach((inputElement)=> {
+    hideInputError(formElement, inputElement, validationConfig)
+  })
+  // Дизейблим или активируем кнопку Сабмит
+  const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector)
   toggleButtonState(inputList, buttonElement, validationConfig)
 }
 
 function validateImageUrl(url, formElement, inputElement, validationConfig) {
-  // Запрос на проверку URL через CORS прокси сервер
-  const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
-  return fetch(proxyUrl, { method: 'HEAD' })
-    .then(response => {
-      // Проверка статуса ответа
-      if (!response.ok) {
-        showInputError(formElement, inputElement, 'URL недоступен или не существует', validationConfig);
-        return false
-      }
-      // Проверка mime-типа в заголовках
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.startsWith('image/')) {
-        showInputError(formElement, inputElement, 'Ссылка не ведет к изображению', validationConfig);
-        return false
-      }
-      return true;
-    });
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    
+    img.onload = () => {
+      // Проверка прошла успешно, URL ведет к изображению
+      resolve(true);
+    };
+    
+    img.onerror = () => {
+      // Ошибка загрузки изображения
+      showInputError(formElement, inputElement, 'URL недоступен или не существует', validationConfig);
+      reject('URL недоступен или не существует, пожалуйста, проверьте URL');
+      // resolve(false);
+    };
+    // Устанавливаем src, чтобы начать загрузку изображения и вернуть true или false
+    img.src = url;
+  });
 }

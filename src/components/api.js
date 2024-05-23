@@ -1,5 +1,5 @@
 
-export { makeRequest, loadUserDates, loadCards, patchProfileDates, postNewCard, patchAvatar, deleteLike, putLike, deleteCard }
+export { makeRequest, getUserDates, getCards, patchProfileDates, postNewCard, patchAvatar, deleteLike, putLike, deleteCard }
 
 const baseUrl = 'https://nomoreparties.co/v1/wff-cohort-13';
 const authorizationKay = 'd48aadef-370a-44fe-8d23-f216f65bbe9f';
@@ -21,16 +21,11 @@ const makeRequest = (uri, method = 'GET', date = null) => {
   // ** Запрос на сервер **
   return fetch(`${baseUrl}/${uri}`, options)
     .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status} ${res.statusText}`))
-    .catch(err => {
-      console.log(err)
-      alert(`Произошла ошибка: ${err}`);
-    })
-
 }
 
 // Загрузка страницы
-const loadUserDates = () => makeRequest('users/me');
-const loadCards = () => makeRequest('/cards');
+const getUserDates = () => makeRequest('users/me');
+const getCards = () => makeRequest('/cards');
 
 // Возможные запросы Юзера
 const patchProfileDates = (user, job) => makeRequest('/users/me', 'PATCH', { name: user, about: job });

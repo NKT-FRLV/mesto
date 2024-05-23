@@ -21,12 +21,13 @@
 
 .card__button-like-box {
   display: grid;
-  gap: 3px;
+  align-content: space-between;
   justify-content: center;
+  max-block-size: 35px;
 }
 
 .card__likes-counter {
-  display: none;
+  display: block;
   margin: 0;
   font-family: Inter;
   font-size: 13px;
