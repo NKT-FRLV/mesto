@@ -3,7 +3,7 @@
 ## **Project Overview**  
 **Mesto** is a **single-page application (SPA)** designed as a **gallery** where users can **view, like, and add photos**. Users can also **update their profile, change their avatar, and manage their cards**. All updated data is stored on the **server**.  
 
-🔗 **[Live Demo](https://mi-viejo-amigo.github.io/mesto/)**  
+🔗 **[Live Demo](https://nkt-frlv.github.io/mesto/)**  
 
 ---
 
@@ -71,6 +71,6 @@ npm run start
 👨‍💻 **Developed by [Nikita Frolov](https://github.com/NKT-FRLV)**  
 
 📩 **Contact me:**  
-- **GitHub:** [mi-viejo-amigo](https://github.com/NKT-FRLV)  
+- **GitHub:** [Nikita aka - NKT-FRLV ](https://github.com/NKT-FRLV)  
 - **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/nktfrlv)  
 - **Email:** [Letter me](mailto:nkt.frlv7@yandex.ru)  
